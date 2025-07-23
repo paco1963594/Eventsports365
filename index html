@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sport Event 365</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #000;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    h1 {
+      margin-top: 20px;
+      font-size: 32px;
+      font-weight: bold;
+      background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+      -webkit-background-clip: text;
+      color: transparent;
+      animation: rainbow 5s linear infinite;
+    }
+
+    @keyframes rainbow {
+      0% { background-position: 0%; }
+      100% { background-position: 100%; }
+    }
+
+    .emoji-circle {
+      position: relative;
+      width: 250px;
+      height: 250px;
+      margin: 40px auto;
+      border-radius: 50%;
+      background-color: #222;
+      animation: rotate-emojis 20s linear infinite;
+    }
+
+    @keyframes rotate-emojis {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .emoji-circle span {
+      position: absolute;
+      font-size: 32px;
+    }
+
+    .emoji1 { top: 0%; left: 50%; transform: translate(-50%, -50%); }
+    .emoji2 { top: 20%; left: 85%; transform: translate(-50%, -50%); }
+    .emoji3 { top: 50%; left: 100%; transform: translate(-50%, -50%); }
+    .emoji4 { top: 80%; left: 85%; transform: translate(-50%, -50%); }
+    .emoji5 { top: 100%; left: 50%; transform: translate(-50%, -50%); }
+    .emoji6 { top: 80%; left: 15%; transform: translate(-50%, -50%); }
+    .emoji7 { top: 50%; left: 0%; transform: translate(-50%, -50%); }
+    .emoji8 { top: 20%; left: 15%; transform: translate(-50%, -50%); }
+
+    .cta-button {
+      display: inline-block;
+      padding: 15px 30px;
+      margin: 20px 0;
+      font-size: 18px;
+      font-weight: bold;
+      color: #fff;
+      background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .message-box {
+      margin-top: 40px;
+      border: 3px solid white;
+      padding: 20px;
+      font-size: 20px;
+      width: 80%;
+      margin-left: auto;
+      margin-right: auto;
+      background-color: #111;
+    }
+
+    img.board-img {
+      width: 90%;
+      max-width: 600px;
+      margin-top: 40px;
+    }
+  </style>
+  <script>
+    const translations = {
+      "ar": {
+        button: "احجز تذكرتك الآن",
+        message: "احجز تذكرتك في جميع الملتقيات الرياضية والموسيقية وغيرها حالاً قبل فوات الأوان"
+      },
+      "en": {
+        button: "Book Your Ticket Now",
+        message: "Book your ticket for all sports and music events before it's too late!"
+      },
+      "fr": {
+        button: "Réservez votre billet maintenant",
+        message: "Réservez votre billet pour tous les événements sportifs et musicaux dès maintenant !"
+      },
+      "es": {
+        button: "Reserva tu entrada ahora",
+        message: "¡Reserva tu entrada para todos los eventos deportivos y musicales ya!"
+      },
+      "de": {
+        button: "Buche jetzt dein Ticket",
+        message: "Buche dein Ticket für alle Sport- und Musikveranstaltungen jetzt!"
+      }
+    };
+
+    function detectLanguage() {
+      const lang = navigator.language.slice(0, 2);
+      return translations[lang] ? lang : "en";
+    }
+
+    window.onload = () => {
+      const lang = detectLanguage();
+      document.getElementById("bookBtn").textContent = translations[lang].button;
+      document.getElementById("messageBox").textContent = translations[lang].message;
+    };
+  </script>
+</head>
+<body>
+  <h1><span style="color:red">Sport</span> <span style="color:green">Event</span> <span style="color:blue">365</span></h1>
+
+  <div class="emoji-circle">
+    <span class="emoji1">🏀</span>
+    <span class="emoji2">⚽</span>
+    <span class="emoji3">🥊</span>
+    <span class="emoji4">🏈</span>
+    <span class="emoji5">🎾</span>
+    <span class="emoji6">🏐</span>
+    <span class="emoji7">🎳</span>
+    <span class="emoji8">🏓</span>
+  </div>
+
+  <a
+    id="bookBtn"
+    class="cta-button"
+    href="https://www.sportsevents365.com/?a_aid=687e726e57fdf"
+    target="_blank"
+  >
+    احجز تذكرتك الآن
+  </a>
+
+  <div id="messageBox" class="message-box">
+    احجز تذكرتك في جميع الملتقيات الرياضية والموسيقية وغيرها حالاً قبل فوات الأوان
+  </div>
+
+  <img src="https://i.imgur.com/aZssLid.jpeg" class="board-img" alt="Board Event Image" />
+</body>
+</html>
