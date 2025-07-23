@@ -7,151 +7,146 @@
   <style>
     body {
       margin: 0;
-      padding: 0;
       background-color: #000;
       color: white;
-      font-family: Arial, sans-serif;
+      font-family: 'Arial', sans-serif;
       text-align: center;
+      overflow-x: hidden;
     }
 
     h1 {
+      font-size: 3em;
       margin-top: 20px;
-      font-size: 32px;
-      font-weight: bold;
-      background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
-      -webkit-background-clip: text;
-      color: transparent;
-      animation: rainbow 5s linear infinite;
+      animation: rainbow 5s infinite;
     }
 
     @keyframes rainbow {
-      0% { background-position: 0%; }
-      100% { background-position: 100%; }
+      0% { color: red; }
+      20% { color: orange; }
+      40% { color: yellow; }
+      60% { color: green; }
+      80% { color: blue; }
+      100% { color: violet; }
     }
 
-    .emoji-circle {
-      position: relative;
+    .rainbow-text span {
+      display: inline-block;
+      animation: rainbow 5s infinite;
+    }
+
+    .ball {
       width: 250px;
       height: 250px;
-      margin: 40px auto;
+      margin: 50px auto;
       border-radius: 50%;
       background-color: #222;
-      animation: rotate-emojis 20s linear infinite;
+      position: relative;
+      overflow: hidden;
+      animation: rotateBall 10s linear infinite;
     }
 
-    @keyframes rotate-emojis {
+    .emoji {
+      position: absolute;
+      font-size: 2rem;
+    }
+
+    @keyframes rotateBall {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
 
-    .emoji-circle span {
-      position: absolute;
-      font-size: 32px;
-    }
-
-    .emoji1 { top: 0%; left: 50%; transform: translate(-50%, -50%); }
-    .emoji2 { top: 20%; left: 85%; transform: translate(-50%, -50%); }
-    .emoji3 { top: 50%; left: 100%; transform: translate(-50%, -50%); }
-    .emoji4 { top: 80%; left: 85%; transform: translate(-50%, -50%); }
-    .emoji5 { top: 100%; left: 50%; transform: translate(-50%, -50%); }
-    .emoji6 { top: 80%; left: 15%; transform: translate(-50%, -50%); }
-    .emoji7 { top: 50%; left: 0%; transform: translate(-50%, -50%); }
-    .emoji8 { top: 20%; left: 15%; transform: translate(-50%, -50%); }
-
-    .cta-button {
-      display: inline-block;
+    .book-now {
+      margin-top: 20px;
       padding: 15px 30px;
-      margin: 20px 0;
-      font-size: 18px;
-      font-weight: bold;
-      color: #fff;
-      background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+      font-size: 1.5em;
       border: none;
       border-radius: 10px;
+      background: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet);
+      background-size: 400% 400%;
+      animation: rainbowBackground 6s ease infinite;
       cursor: pointer;
-      text-decoration: none;
     }
 
-    .message-box {
-      margin-top: 40px;
-      border: 3px solid white;
+    @keyframes rainbowBackground {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .welcome-box {
+      border: 2px solid #fff;
       padding: 20px;
-      font-size: 20px;
-      width: 80%;
-      margin-left: auto;
-      margin-right: auto;
+      margin: 40px auto;
+      max-width: 600px;
+      font-size: 1.2em;
       background-color: #111;
     }
 
     img.board-img {
-      width: 90%;
-      max-width: 600px;
+      width: 80%;
       margin-top: 40px;
     }
+
+    .emoji:nth-child(1) { top: 10%; left: 40%; }
+    .emoji:nth-child(2) { top: 30%; left: 70%; }
+    .emoji:nth-child(3) { top: 60%; left: 20%; }
+    .emoji:nth-child(4) { top: 80%; left: 50%; }
+    .emoji:nth-child(5) { top: 50%; left: 10%; }
+
   </style>
-  <script>
-    const translations = {
-      "ar": {
-        button: "احجز تذكرتك الآن",
-        message: "احجز تذكرتك في جميع الملتقيات الرياضية والموسيقية وغيرها حالاً قبل فوات الأوان"
-      },
-      "en": {
-        button: "Book Your Ticket Now",
-        message: "Book your ticket for all sports and music events before it's too late!"
-      },
-      "fr": {
-        button: "Réservez votre billet maintenant",
-        message: "Réservez votre billet pour tous les événements sportifs et musicaux dès maintenant !"
-      },
-      "es": {
-        button: "Reserva tu entrada ahora",
-        message: "¡Reserva tu entrada para todos los eventos deportivos y musicales ya!"
-      },
-      "de": {
-        button: "Buche jetzt dein Ticket",
-        message: "Buche dein Ticket für alle Sport- und Musikveranstaltungen jetzt!"
-      }
-    };
-
-    function detectLanguage() {
-      const lang = navigator.language.slice(0, 2);
-      return translations[lang] ? lang : "en";
-    }
-
-    window.onload = () => {
-      const lang = detectLanguage();
-      document.getElementById("bookBtn").textContent = translations[lang].button;
-      document.getElementById("messageBox").textContent = translations[lang].message;
-    };
-  </script>
 </head>
 <body>
-  <h1><span style="color:red">Sport</span> <span style="color:green">Event</span> <span style="color:blue">365</span></h1>
+  <h1 class="rainbow-text">
+    <span style="color:red;">Sport</span>
+    <span style="color:orange;">Event</span>
+    <span style="color:green;">365</span>
+  </h1>
 
-  <div class="emoji-circle">
-    <span class="emoji1">🏀</span>
-    <span class="emoji2">⚽</span>
-    <span class="emoji3">🥊</span>
-    <span class="emoji4">🏈</span>
-    <span class="emoji5">🎾</span>
-    <span class="emoji6">🏐</span>
-    <span class="emoji7">🎳</span>
-    <span class="emoji8">🏓</span>
+  <div class="ball">
+    <div class="emoji">🏀</div>
+    <div class="emoji">🥊</div>
+    <div class="emoji">🏐</div>
+    <div class="emoji">⚽</div>
+    <div class="emoji">🎾</div>
   </div>
 
-  <a
-    id="bookBtn"
-    class="cta-button"
-    href="https://www.sportsevents365.com/?a_aid=687e726e57fdf"
-    target="_blank"
-  >
-    احجز تذكرتك الآن
+  <a href="https://www.sportsevents365.com/?a_aid=687e726e57fdf" target="_blank">
+    <button class="book-now" id="bookBtn">احجز تذكرتك الآن</button>
   </a>
 
-  <div id="messageBox" class="message-box">
-    احجز تذكرتك في جميع الملتقيات الرياضية والموسيقية وغيرها حالاً قبل فوات الأوان
+  <div class="welcome-box" id="welcomeMsg">
+    احجز تذكرتك في جميع الملتقيات الرياضية والموسيقية وغيرها حالا قبل فوات الأوان
   </div>
 
-  <img src="https://i.imgur.com/aZssLid.jpeg" class="board-img" alt="Board Event Image" />
+  <img class="board-img" src="https://i.imgur.com/aZssLid.jpeg" alt="Board Event" />
+
+  <script>
+    const translations = [
+      "Book your ticket for all sports and music events now before it's too late",
+      "Réservez votre billet pour tous les événements sportifs et musicaux dès maintenant",
+      "Reserva tu entrada para todos los eventos deportivos y musicales ahora antes de que sea demasiado tarde",
+      "احجز تذكرتك في جميع الملتقيات الرياضية والموسيقية وغيرها حالا قبل فوات الأوان",
+      "Prenota ora il tuo biglietto per tutti gli eventi sportivi e musicali",
+      "Jetzt dein Ticket für alle Sport- und Musikevents buchen!",
+      "予約はお早めに！スポーツや音楽イベントのチケットをゲットしよう！"
+    ];
+
+    const bookTranslations = [
+      "احجز تذكرتك الآن",
+      "Book Now",
+      "Réservez maintenant",
+      "Reserva ahora",
+      "Prenota ora",
+      "Jetzt buchen",
+      "今すぐ予約"
+    ];
+
+    let i = 0;
+    setInterval(() => {
+      document.getElementById("welcomeMsg").innerText = translations[i % translations.length];
+      document.getElementById("bookBtn").innerText = bookTranslations[i % bookTranslations.length];
+      i++;
+    }, 4000);
+  </script>
 </body>
 </html>
